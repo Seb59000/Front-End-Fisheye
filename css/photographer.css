@@ -8,6 +8,38 @@
     margin: 0 100px;
 }
 
+.photograph-header>div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photograph-header h1 {
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 64px;
+    margin-right: 0;
+}
+
+.photograph-header h2 {
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.photograph-header p {
+    margin-top: 1em;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -15,6 +47,39 @@
     padding: 11px;
     width: 170px;
     height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact_button:hover {
+    color: black;
+    background-color: #DB8876;
+}
+
+.contact_button:active {
+    color: black;
+    background-color: #DB8876;
+}
+
+.photos {
+    margin: 0 100px;
+}
+
+.photos label {
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 1em;
+}
+
+.select {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 60px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
