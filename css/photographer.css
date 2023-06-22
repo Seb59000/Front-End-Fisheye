@@ -45,6 +45,7 @@
     font-weight: bold;
     color: white;
     padding: 11px;
+    margin-top: 20px;
     width: 170px;
     height: 70px;
     border: none;
@@ -84,15 +85,57 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 58px;
+}
+
+.photos img,
+.photos video {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.photos-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+.marginV {
+    margin: 10px 0 30px 0;
+}
+
+.fa-heart {
+    text-decoration: none;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+#price-and-likes {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    border-radius: 5px;
+    background-color: #DB8876;
+    padding: 24px;
+    font-size: 24px;
 }
 
 .modal {
+    position: fixed;
+    top: 0;
+    left: 25%;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
@@ -108,9 +151,14 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 58px;
     font-weight: normal;
     text-align: center;
+}
+
+#photographer-name {
+    font-weight: 400;
+    font-size: 58px;
 }
 
 form {
@@ -130,7 +178,6 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
 }
 
 form input {
@@ -138,4 +185,15 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 20px;
 }
