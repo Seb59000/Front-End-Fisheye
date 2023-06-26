@@ -65,7 +65,7 @@
 }
 
 .photos {
-    margin: 0 100px;
+    margin: 0 6em 5em 6em;
 }
 
 .photos label {
@@ -112,6 +112,8 @@
 }
 
 .fa-heart {
+    cursor: pointer;
+    border: none;
     text-decoration: none;
     margin-top: 3px;
     margin-left: 5px;

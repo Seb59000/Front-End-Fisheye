@@ -1,6 +1,6 @@
 /** pattern factory */
 function mediaFactory(data, name) {
-    const { photographerId, title, image, video, likes } = data;
+    const { photographerId, title, image, video, likes, id } = data;
 
     // liste photos constructor
     function getPhotosDOM() {
@@ -38,7 +38,10 @@ function mediaFactory(data, name) {
 
         const linkLikes = document.createElement('a');
         linkLikes.className = "red fa-solid fa-heart";
-        linkLikes.setAttribute('href', "photographer.html?id=" + photographerId);
+
+        linkLikes.addEventListener("click", function () {
+            ClickLike(id);
+        });
 
         linkPhotoBox.appendChild(img);
         article.appendChild(linkPhotoBox);
@@ -52,4 +55,19 @@ function mediaFactory(data, name) {
     }
 
     return { getPhotosDOM }
+}
+
+async function ClickLike(id) {
+    console.log(id);
+    photographers = await getJSON();
+    console.log(photographers);
+}
+
+/**
+ * recupère les données du fichier JSON
+ */
+async function getJSON() {
+    const reponse = await fetch("data/photographers.json");
+    const photographers = await reponse.json();
+    return photographers;
 }

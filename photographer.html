@@ -21,7 +21,8 @@
     <section class="photos">
       <label for="tri">Trier par</label>
 
-      <select role="button" class="select" aria-haspopup="listbox" name="tri" id="tri">
+      <select role="button" class="select" aria-haspopup="listbox" name="tri" id="tri" onchange="OrderMedias()">
+        <option value="" selected disabled hidden>Aucun filtre</option>
         <option value="popularite">Popularité</option>
         <option value="date">Date</option>
         <option value="titre">Titre</option>
