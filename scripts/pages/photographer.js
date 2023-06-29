@@ -1,4 +1,5 @@
 let photographerName = "";
+let photosFromJSON = "";
 /**
  * Récupération de l'id du photographe depuis l'url
  */
@@ -42,10 +43,13 @@ async function displayInfos(photographer) {
  * Récupération des photos du photographe depuis le fichier JSON
  */
 async function getPhotographerPhotos(id) {
-    const photographers = await getJSON();
-
-    const photos = photographers.media.filter(media => media.photographerId == id);
-    return photos;
+    if (photosFromJSON == "") {
+        const photographers = await getJSON();
+        photosFromJSON = photographers;
+        return photographers.media.filter(media => media.photographerId == id);
+    } else {
+        return photosFromJSON.media.filter(media => media.photographerId == id);
+    }
 }
 
 /** 
@@ -55,10 +59,12 @@ function displayPhotos(photos) {
     const listPhotos = document.querySelector(".photos-list");
     listPhotos.innerHTML = '';
 
+    let cptr = 0;
     photos.forEach((photo) => {
-        const photosModel = mediaFactory(photo, photographerName);
+        const photosModel = mediaFactory(photo, photographerName, cptr);
         const photosDOM = photosModel.getPhotosDOM();
         listPhotos.appendChild(photosDOM);
+        cptr++;
     });
 };
 
@@ -97,15 +103,15 @@ async function OrderMedias() {
     switch (tri) {
         case "date":
             const photosOrderedByDate = await OrderByDate();
-            displayPhotos(photosOrderedByDate, photographerName);
+            displayPhotos(photosOrderedByDate);
             break;
         case "titre":
             const photosOrderByTitle = await OrderByTitle();
-            displayPhotos(photosOrderByTitle, photographerName);
+            displayPhotos(photosOrderByTitle);
             break;
         case "popularite":
             const photosOrderByLikes = await OrderByLikes();
-            displayPhotos(photosOrderByLikes, photographerName);
+            displayPhotos(photosOrderByLikes);
             break;
         default:
             break;
@@ -145,15 +151,6 @@ async function OrderByDate() {
 }
 
 /**
- * recupère les données du fichier JSON
- */
-async function getJSON() {
-    const reponse = await fetch("data/photographers.json");
-    const photographers = await reponse.json();
-    return photographers;
-}
-
-/**
  * réordonne les médias par likes
  */
 async function OrderByLikes() {
@@ -167,16 +164,29 @@ async function OrderByLikes() {
 }
 
 /**
+ * recupère les données du fichier JSON
+ */
+async function getJSON() {
+    const reponse = await fetch("data/photographers.json");
+    const photographers = await reponse.json();
+    return photographers;
+}
+
+/**
  * Récupère les données du photographe
  */
 async function init() {
+
+    EventOrderMedias();
+    EventCloseModale();
+
     const id = getPhotographerId();
 
     const data = await getPhotographerInfos(id);
     displayInfos(data);
 
     const photos = await getPhotographerPhotos(id);
-    displayPhotos(photos, photographerName);
+    displayPhotos(photos);
 
     displayPrice(data.price);
     displayLikesTotal(await calculNbLikes(photos));
@@ -184,29 +194,19 @@ async function init() {
 
 init();
 
-function ChangeLikes() {
-    // Charger le fichier JSON
-    fetch('example.json')
-        .then(response => response.json())
-        .then(data => {
-            // Modifier les données JSON
-            data.name = 'John Doe';
-            data.age = 30;
+/**
+ * event listener fermeture modale contact
+ */
+function EventCloseModale() {
+    const modalClose = document.getElementById("modale-close");
+    modalClose.addEventListener("click", closeModal);
+}
 
-            // Convertir les données modifiées en chaîne JSON
-            const jsonString = JSON.stringify(data);
-
-            // Écrire les données modifiées dans le fichier JSON
-            fs.writeFile('example.json', jsonString, err => {
-                if (err) {
-                    console.log('Error writing file', err);
-                } else {
-                    console.log('Successfully wrote file');
-                }
-            });
-        })
-        .catch(err => {
-            console.error('Error fetching data', err);
-        });
+/**
+ * event listener fermeture modale contact
+ */
+function EventOrderMedias() {
+    const modalClose = document.querySelector(".select");
+    modalClose.addEventListener("change", OrderMedias);
 }
 

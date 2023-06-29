@@ -15,13 +15,19 @@ const erreurPrenom = document.createElement('div');
 const erreurEmail = document.createElement('div');
 const erreurMessage = document.createElement('div');
 
+/**
+ * Ouverture de la modale
+ */
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
-    // focus sur modale
+    // focus sur le premier champ du formulaire
     nom.focus();
 }
 
+/**
+ * Fermeture de la modale
+ */
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
@@ -181,6 +187,10 @@ function VerifMessageLength(event) {
         messageValid = false;
         const errorMessage = document.getElementById("erreur-message");
         errorMessage.innerHTML = "Veuillez rentrer au moins deux lettres";
+    } else {
+        messageValid = true;
+        const errorMessage = document.getElementById("erreur-message");
+        errorMessage.innerHTML = "";
     }
 }
 
@@ -199,13 +209,13 @@ function Validate() {
     ErrorMessage(emailValid, "erreur-email", "Veuillez entrer un email valide");
 
     // message renseigné
-    ErrorMessage(emailValid, "erreur-message", "Veuillez entrer un message valide");
+    ErrorMessage(messageValid, "erreur-message", "Veuillez entrer un message valide");
 
     if (firstValid && lastValid && emailValid && messageValid) {
         const modal = document.getElementById("contact_modal");
         modal.style.display = "none";
 
-        console.log(" nom: " + nom.value + " prenom: " + prenom.value + " email: " + email.value + " message: " + message.value);
+        console.log(" nom: " + nom.value + "\br prenom: " + prenom.value + " email: " + email.value + " message: " + message.value);
     }
 }
 /**
@@ -244,6 +254,9 @@ function verifInputs() {
     btnSubmit.addEventListener("click", Validate);
 }
 
+/**
+ * creation des elements et verification des entrées
+ */
 function init() {
     createElements();
     verifInputs();

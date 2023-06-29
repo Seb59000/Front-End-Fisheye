@@ -21,7 +21,7 @@
     <section class="photos">
       <label for="tri">Trier par</label>
 
-      <select role="button" class="select" aria-haspopup="listbox" name="tri" id="tri" onchange="OrderMedias()">
+      <select role="button" class="select" aria-haspopup="listbox" name="tri" id="tri">
         <option value="" selected disabled hidden>Aucun filtre</option>
         <option value="popularite">Popularité</option>
         <option value="date">Date</option>
@@ -39,14 +39,40 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img id="modale-close" src="assets/icons/close.svg" />
       </header>
       <p id="photographer-name"></p>
       <form id="contact-form">
       </form>
     </div>
   </div>
+  <div id="lightbox">
+    <div class="lightbox-container">
+      <div class="lightbox-container-left">
+        <div role="button" class="controls controls-left">
+          <i aria-hidden="true" class="fa-solid fa-chevron-left"></i>
+          <p class="sr-only">Previous</p>
+        </div>
+      </div>
+      <div class="lightbox-container-center">
+        <div id="lightbox-media" src="assets/photos/Mimi Keel/Portrait_Nora.jpg"></div>
+        <p id="lightbox-photo-title">Arc en ciel</p>
+
+      </div>
+      <div class="lightbox-container-right">
+        <i class="fixed fa-solid fa-xmark"></i>
+
+        <div role="button" class="controls controls-right">
+          <span class="img next-image">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          </span>
+          <p class="sr-only">Next</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="scripts/factories/photographer.js"></script>
+  <script src="/scripts/utils/lightBox.js"></script>
   <script src="scripts/factories/media.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/pages/photographer.js"></script>

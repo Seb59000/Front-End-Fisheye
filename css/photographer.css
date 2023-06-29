@@ -139,7 +139,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 35px;
+    padding: 1em 3em;
     margin: auto;
 }
 
@@ -148,7 +148,10 @@
     width: 100%;
 }
 
-.modal header img {
+.modal header img,
+.lightbox-container i,
+article img,
+article video {
     cursor: pointer;
 }
 
@@ -198,4 +201,66 @@ form textarea {
     border-radius: 5px;
     font-weight: 400;
     font-size: 20px;
+}
+
+#lightbox {
+    display: none;
+    padding-top: 2.5em;
+    position: fixed;
+    top: 0;
+    border-radius: 5px;
+    color: #901C1C;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 70%);
+}
+
+.fixed {
+    position: fixed;
+    top: 1em;
+}
+
+.lightbox i {
+    cursor: pointer;
+}
+
+.lightbox-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.lightbox-container-left {
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    background-color: white;
+
+}
+
+.lightbox-container-center {
+    width: 80%;
+    background: white;
+    padding: 1em;
+}
+
+.lightbox-container-right {
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    background-color: white;
+
+}
+
+#lightbox-media img,
+#lightbox-media video {
+    object-fit: cover;
+    width: 100%;
+    height: 800px;
+}
+
+#lightbox-photo-title {
+    font-size: 24px;
 }
