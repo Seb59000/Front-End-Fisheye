@@ -17,7 +17,7 @@ function mediaFactory(data, name, cptr) {
             let picture = `assets/photos/${name}/${video}`;
             img = document.createElement('video');
             img.setAttribute("src", picture);
-            img.setAttribute('alt', name);
+            img.setAttribute('alt', name + " " + title);
             img.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
@@ -25,6 +25,7 @@ function mediaFactory(data, name, cptr) {
             img.setAttribute('role', "navigation");
             let picture = `assets/photos/${name}/${image}`;
             img.setAttribute("src", picture);
+            img.setAttribute('alt', name + " " + title);
             img.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
@@ -142,13 +143,13 @@ function DisplayMedia(image, name, video, title) {
         let picture = `assets/photos/${name}/${video}`;
         const media = document.createElement('video');
         media.setAttribute("src", picture);
-        media.setAttribute('alt', name);
         media.controls = true;
         mediaContainer.appendChild(media);
     } else {
         let picture = `assets/photos/${name}/${image}`;
         const media = document.createElement('img');
         media.setAttribute("src", picture);
+        media.setAttribute('alt', title);
         mediaContainer.appendChild(media);
     }
     mediaTitle.textContent = title;
@@ -160,5 +161,10 @@ function DisplayMedia(image, name, video, title) {
 function DisplayLightBox() {
     const lightbox = document.getElementById("lightbox");
     lightbox.style.display = "block";
+    lightbox.setAttribute("aria-hidden", false);
+    lightboxOpened = true;
+
+    const main = document.getElementById("main");
+    main.setAttribute("aria-hidden", true);
 }
 

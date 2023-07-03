@@ -86,6 +86,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 58px;
+    border-right: solid 15px #901C1C
 }
 
 .photos img,
@@ -263,4 +264,10 @@ form textarea {
 
 #lightbox-photo-title {
     font-size: 24px;
+}
+
+.sr-only {
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }

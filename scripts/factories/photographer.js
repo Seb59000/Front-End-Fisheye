@@ -13,7 +13,7 @@ function photographerFactory(data) {
         link.setAttribute('role', "navigation");
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute('alt', name);
+        img.setAttribute('alt', "photographe " + name);
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const p1 = document.createElement('p');

@@ -4,6 +4,8 @@ let lastValid = false;
 let emailValid = false;
 let messageValid = false;
 
+contactModalOpened = false;
+
 // DOM Elements
 const nom = document.createElement('input');
 const prenom = document.createElement('input');
@@ -21,8 +23,15 @@ const erreurMessage = document.createElement('div');
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
+
+    modal.setAttribute("aria-hidden", false);
+
+    const main = document.getElementById("main");
+    main.setAttribute("aria-hidden", true);
+
     // focus sur le premier champ du formulaire
     nom.focus();
+    contactModalOpened = true;
 }
 
 /**
@@ -31,18 +40,45 @@ function displayModal() {
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+
+    modal.setAttribute("aria-hidden", true);
+
+    const main = document.getElementById("main");
+    main.setAttribute("aria-hidden", false);
+
+    contactModalOpened = false;
+}
+/**
+ * eventlistener 
+ */
+function EcapeEvent() {
+    window.addEventListener("keydown", function (event) {
+        if (contactModalOpened) {
+            if (event.code == "Escape") {
+                closeModal();
+            }
+        }
+    });
 }
 
 /**
  * ajout des labels et modif inputs
  *  */
-function createElements() {
+function CreateElements() {
     const form = document.getElementById("contact-form");
 
-    nom.setAttribute('id', 'nom')
-    prenom.setAttribute('id', 'prenom')
-    email.setAttribute('id', 'email')
-    message.setAttribute('id', 'message')
+    nom.setAttribute('id', 'nom');
+    nom.setAttribute('required', 'true');
+    nom.setAttribute('aria-required', 'true');
+    prenom.setAttribute('id', 'prenom');
+    prenom.setAttribute('required', 'true');
+    prenom.setAttribute('aria-required', 'true');
+    email.setAttribute('id', 'email');
+    email.setAttribute('required', 'true');
+    email.setAttribute('aria-required', 'true');
+    message.setAttribute('id', 'message');
+    message.setAttribute('required', 'true');
+    message.setAttribute('aria-required', 'true');
 
     const labelNom = document.createElement('label');
     labelNom.setAttribute('for', 'nom');
@@ -215,7 +251,7 @@ function Validate() {
         const modal = document.getElementById("contact_modal");
         modal.style.display = "none";
 
-        console.log(" nom: " + nom.value + "\br prenom: " + prenom.value + " email: " + email.value + " message: " + message.value);
+        console.log(" nom: " + nom.value + "\n prenom: " + prenom.value + "\n email: " + email.value + "\n message: " + message.value);
     }
 }
 /**
@@ -236,7 +272,7 @@ function ErrorMessage(item, idHtml, message) {
 /**
  * verif des inputs
  */
-function verifInputs() {
+function VerifInputs() {
     // verif input first name
     nom.addEventListener("input", VeriFirstName);
     // verif input first name length
@@ -258,8 +294,9 @@ function verifInputs() {
  * creation des elements et verification des entrées
  */
 function init() {
-    createElements();
-    verifInputs();
+    EcapeEvent();
+    CreateElements();
+    VerifInputs();
 }
 
 init();

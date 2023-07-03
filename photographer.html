@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -35,23 +35,23 @@
       <span id="price"></span>
     </div>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" aria-hidden="true" role="dialog" aria-label="Formulaire de contact">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img id="modale-close" src="assets/icons/close.svg" />
+        <img id="modale-close" src="assets/icons/close.svg" alt="" />
       </header>
-      <p id="photographer-name"></p>
+      <p id="photographer-name" aria-label="nom du photographe"></p>
       <form id="contact-form">
       </form>
     </div>
   </div>
-  <div id="lightbox">
+  <div id="lightbox" role="listbox" aria-hidden="true" aria-label="Visionnage des photos">
     <div class="lightbox-container">
       <div class="lightbox-container-left">
         <div role="button" class="controls controls-left">
           <i aria-hidden="true" class="fa-solid fa-chevron-left"></i>
-          <p class="sr-only">Previous</p>
+          <p class="sr-only">Précédent</p>
         </div>
       </div>
       <div class="lightbox-container-center">
@@ -63,10 +63,8 @@
         <i class="fixed fa-solid fa-xmark"></i>
 
         <div role="button" class="controls controls-right">
-          <span class="img next-image">
-            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
-          </span>
-          <p class="sr-only">Next</p>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <p class="sr-only">Prochain</p>
         </div>
       </div>
     </div>

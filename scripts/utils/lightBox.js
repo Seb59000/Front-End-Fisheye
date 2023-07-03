@@ -1,18 +1,45 @@
-const btnClose = document.querySelector(".fixed");
-btnClose.addEventListener("click", CloseLightBox);
+let lightboxOpened = false;
 
-const btnPrevious = document.querySelector(".controls-left");
-btnPrevious.addEventListener("click", DisplayPreviousMedia);
+Init();
 
-const btnNext = document.querySelector(".controls-right");
-btnNext.addEventListener("click", DisplayNextMedia);
+function Init() {
+    const btnClose = document.querySelector(".fixed");
+    btnClose.addEventListener("click", CloseLightBox);
+
+    const btnPrevious = document.querySelector(".controls-left");
+    btnPrevious.addEventListener("click", DisplayPreviousMedia);
+
+    const btnNext = document.querySelector(".controls-right");
+    btnNext.addEventListener("click", DisplayNextMedia);
+
+    // event listener sur touche navigation lightbox
+    window.addEventListener("keydown", function (event) {
+        if (lightboxOpened) {
+            if (event.code === "ArrowLeft") {
+                // Handle "left"
+                DisplayPreviousMedia();
+            } else if (event.code === "ArrowRight") {
+                // Handle "right"
+                DisplayNextMedia();
+            } else if (event.code == "Escape") {
+                CloseLightBox();
+            }
+        }
+    });
+}
 
 /**
- * event listener fermeture la light box
+ * event listener fermeture  lightbox
  */
 function CloseLightBox() {
     const lightbox = document.getElementById("lightbox");
     lightbox.style.display = "none";
+    lightbox.setAttribute("aria-hidden", true);
+
+    const main = document.getElementById("main");
+    main.setAttribute("aria-hidden", false);
+
+    lightboxOpened = false;
 }
 
 function DisplayPreviousMedia() {
