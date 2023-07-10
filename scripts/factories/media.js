@@ -20,7 +20,7 @@ function mediaFactory(data, name, cptr) { /* eslint-disable-line no-unused-vars 
             let picture = `assets/photos/${name}/${video}`;
             img = document.createElement("video");
             img.setAttribute("src", picture);
-            img.setAttribute("alt", name + " " + title);
+            img.setAttribute("alt", title);
             const textDescription = document.createElement("span");
             textDescription.innerText = "desc";
             textDescription.setAttribute("class", "sr-only");
@@ -32,7 +32,7 @@ function mediaFactory(data, name, cptr) { /* eslint-disable-line no-unused-vars 
             img.setAttribute("role", "navigation");
             let picture = `assets/photos/${name}/${image}`;
             img.setAttribute("src", picture);
-            img.setAttribute("alt", name + " " + title);
+            img.setAttribute("alt", title);
             btnOpenLightbox.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
