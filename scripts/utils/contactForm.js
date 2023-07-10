@@ -4,23 +4,23 @@ let lastValid = false;
 let emailValid = false;
 let messageValid = false;
 
-contactModalOpened = false;
+let contactModalOpened = false;
 
 // DOM Elements
-const nom = document.createElement('input');
-const prenom = document.createElement('input');
-const email = document.createElement('input');
-const message = document.createElement('textarea');
-const btnSubmit = document.createElement('button');
-const erreurNom = document.createElement('div');
-const erreurPrenom = document.createElement('div');
-const erreurEmail = document.createElement('div');
-const erreurMessage = document.createElement('div');
+const nom = document.createElement("input");
+const prenom = document.createElement("input");
+const email = document.createElement("input");
+const message = document.createElement("textarea");
+const btnSubmit = document.createElement("button");
+const erreurNom = document.createElement("div");
+const erreurPrenom = document.createElement("div");
+const erreurEmail = document.createElement("div");
+const erreurMessage = document.createElement("div");
 
 /**
  * Ouverture de la modale
  */
-function displayModal() {
+function displayModal() { /* eslint-disable-line no-unused-vars */
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
 
@@ -67,43 +67,43 @@ function EcapeEvent() {
 function CreateElements() {
     const form = document.getElementById("contact-form");
 
-    nom.setAttribute('id', 'nom');
-    nom.setAttribute('required', 'true');
-    nom.setAttribute('aria-required', 'true');
-    prenom.setAttribute('id', 'prenom');
-    prenom.setAttribute('required', 'true');
-    prenom.setAttribute('aria-required', 'true');
-    email.setAttribute('id', 'email');
-    email.setAttribute('required', 'true');
-    email.setAttribute('aria-required', 'true');
-    message.setAttribute('id', 'message');
-    message.setAttribute('required', 'true');
-    message.setAttribute('aria-required', 'true');
+    nom.setAttribute("id", "nom");
+    nom.setAttribute("required", "true");
+    nom.setAttribute("aria-required", "true");
+    prenom.setAttribute("id", "prenom");
+    prenom.setAttribute("required", "true");
+    prenom.setAttribute("aria-required", "true");
+    email.setAttribute("id", "email");
+    email.setAttribute("required", "true");
+    email.setAttribute("aria-required", "true");
+    message.setAttribute("id", "message");
+    message.setAttribute("required", "true");
+    message.setAttribute("aria-required", "true");
 
-    const labelNom = document.createElement('label');
-    labelNom.setAttribute('for', 'nom');
+    const labelNom = document.createElement("label");
+    labelNom.setAttribute("for", "nom");
     labelNom.textContent = "Nom";
-    const labelPrenom = document.createElement('label');
-    labelPrenom.setAttribute('for', 'prenom');
+    const labelPrenom = document.createElement("label");
+    labelPrenom.setAttribute("for", "prenom");
     labelPrenom.textContent = "Prénom";
-    const labelEmail = document.createElement('label');
-    labelEmail.setAttribute('for', 'email');
+    const labelEmail = document.createElement("label");
+    labelEmail.setAttribute("for", "email");
     labelEmail.textContent = "Email";
-    const labelMessage = document.createElement('label');
-    labelMessage.setAttribute('for', 'message');
+    const labelMessage = document.createElement("label");
+    labelMessage.setAttribute("for", "message");
     labelMessage.textContent = "Votre message";
 
-    erreurNom.setAttribute('id', 'erreur-nom');
-    erreurNom.setAttribute('class', 'white');
-    erreurPrenom.setAttribute('id', 'erreur-prenom');
-    erreurPrenom.setAttribute('class', 'white');
-    erreurEmail.setAttribute('id', 'erreur-email');
-    erreurEmail.setAttribute('class', 'white');
-    erreurMessage.setAttribute('id', 'erreur-message');
-    erreurMessage.setAttribute('class', 'white');
+    erreurNom.setAttribute("id", "erreur-nom");
+    erreurNom.setAttribute("class", "white");
+    erreurPrenom.setAttribute("id", "erreur-prenom");
+    erreurPrenom.setAttribute("class", "white");
+    erreurEmail.setAttribute("id", "erreur-email");
+    erreurEmail.setAttribute("class", "white");
+    erreurMessage.setAttribute("id", "erreur-message");
+    erreurMessage.setAttribute("class", "white");
 
-    btnSubmit.setAttribute('type', 'button');
-    btnSubmit.setAttribute('class', 'contact_button');
+    btnSubmit.setAttribute("type", "button");
+    btnSubmit.setAttribute("class", "contact_button");
     btnSubmit.textContent = "Envoyer";
 
     form.appendChild(labelNom);
@@ -199,7 +199,7 @@ function VerifEmail(event) {
     const input = event.target.value;
 
     // verif mail regex
-    var regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.{1}[a-zA-Z0-9]+$");
+    var regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.{1}[a-zA-Z0-9]+$");
     if (regex.test(input)) {
         emailValid = true;
         const errorMessage = document.getElementById("erreur-email");

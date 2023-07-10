@@ -2,9 +2,8 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/64434449ec.js" crossorigin="anonymous"></script>
@@ -14,26 +13,26 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" alt="logo de FishEye - Page d’accueil" class="logo" dir="ltr"
-        role="navigation" />
+      <img src="assets/images/logo.png" alt="logo de FishEye - Page d’accueil" class="logo" dir="ltr" rel="icon">
     </a>
   </header>
   <main id="main">
     <div class="photograph-header"></div>
-    <section class="photos">
+    <div class="photos">
       <label for="tri">Trier par</label>
 
-      <select role="button" class="select" aria-haspopup="listbox" name="tri" id="tri">
+      <select class="select" aria-haspopup="listbox" name="tri" id="tri">
         <option value="" selected disabled hidden>Aucun filtre</option>
         <option value="popularite">Popularité</option>
         <option value="date">Date</option>
         <option value="titre">Titre</option>
       </select>
-      <div class="photos-list"></div>
-    </section>
+
+      <div role="navigation" class="photos-list"></div>
+    </div>
     <div id="price-and-likes">
       <span id="likesTotal"></span>
-      <i class="fa-solid fa-heart"></i>
+      <span aria-hidden="true" class="fa-solid fa-heart"></span>
       <span id="price"></span>
     </div>
   </main>
@@ -41,9 +40,9 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img id="modale-close" src="assets/icons/close.svg" alt="" />
+        <img id="modale-close" src="assets/icons/close.svg" alt="" tabindex="0">
       </header>
-      <p id="photographer-name" aria-label="nom du photographe"></p>
+      <p id="photographer-name"></p>
       <form id="contact-form">
       </form>
     </div>
@@ -52,20 +51,19 @@
     <div class="lightbox-container">
       <div class="lightbox-container-left">
         <div role="button" class="controls controls-left">
-          <i aria-hidden="true" class="fa-solid fa-chevron-left"></i>
+          <span aria-hidden="true" class="fa-solid fa-chevron-left"></span>
           <p class="sr-only">Précédent</p>
         </div>
       </div>
       <div class="lightbox-container-center">
-        <div id="lightbox-media" src="assets/photos/Mimi Keel/Portrait_Nora.jpg"></div>
-        <p id="lightbox-photo-title">Arc en ciel</p>
-
+        <div id="lightbox-media"></div>
+        <p id="lightbox-photo-title"></p>
       </div>
       <div class="lightbox-container-right">
-        <i class="fixed fa-solid fa-xmark"></i>
+        <span aria-hidden="true" class="fixed fa-solid fa-xmark"></span>
 
         <div role="button" class="controls controls-right">
-          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <span aria-hidden="true" class="fa-solid fa-chevron-right"></span>
           <p class="sr-only">Prochain</p>
         </div>
       </div>

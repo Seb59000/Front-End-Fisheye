@@ -1,66 +1,82 @@
-let selectedMedia = 0;
-let selectedPhotographer = "";
+let selectedMedia = 0; /* eslint-disable-line no-unused-vars */
+let selectedPhotographer = ""; /* eslint-disable-line no-unused-vars */
 
 /** pattern factory */
-function mediaFactory(data, name, cptr) {
-    const { photographerId, title, image, video, likes, id } = data;
+function mediaFactory(data, name, cptr) { /* eslint-disable-line no-unused-vars */
+    const { title, image, video, likes, id } = data;
 
     // liste photos constructor
     function getPhotosDOM() {
-        const article = document.createElement('article');
+        const article = document.createElement("article");
 
-        let img = document.createElement('img');
-        img.setAttribute('alt', name);
+        const btnOpenLightbox = document.createElement("button");
+        btnOpenLightbox.setAttribute("type", "button");
+
+        let img = document.createElement("img");
+        img.setAttribute("alt", name);
 
         if (image === undefined) {
-            img.setAttribute('role', "navigation");
+            img.setAttribute("role", "navigation");
             let picture = `assets/photos/${name}/${video}`;
-            img = document.createElement('video');
+            img = document.createElement("video");
             img.setAttribute("src", picture);
-            img.setAttribute('alt', name + " " + title);
-            img.addEventListener("click", function () {
+            img.setAttribute("alt", name + " " + title);
+            const textDescription = document.createElement("span");
+            textDescription.innerText = "desc";
+            textDescription.setAttribute("class", "sr-only");
+            btnOpenLightbox.appendChild(textDescription);
+            btnOpenLightbox.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
         } else {
-            img.setAttribute('role', "navigation");
+            img.setAttribute("role", "navigation");
             let picture = `assets/photos/${name}/${image}`;
             img.setAttribute("src", picture);
-            img.setAttribute('alt', name + " " + title);
-            img.addEventListener("click", function () {
+            img.setAttribute("alt", name + " " + title);
+            btnOpenLightbox.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
         }
 
-        const div = document.createElement('div');
+        btnOpenLightbox.appendChild(img);
+
+        const div = document.createElement("div");
         div.className = "red line marginV";
 
-        const p = document.createElement('p');
+        const p = document.createElement("p");
         p.textContent = title;
 
-        const div2 = document.createElement('div');
+        const div2 = document.createElement("div");
         div2.className = "line";
 
-        const p2 = document.createElement('p');
+        const p2 = document.createElement("p");
         p2.textContent = likes;
 
-        const linkLikes = document.createElement('a');
-        linkLikes.className = "red fa-solid fa-heart";
-
-        linkLikes.addEventListener("click", function () {
+        const btnLikes = document.createElement("button");
+        btnLikes.addEventListener("click", function () {
             ClickLike(id);
         });
 
-        article.appendChild(img);
+        const linkLikes = document.createElement("span");
+        linkLikes.className = "red fa-solid fa-heart";
+        btnLikes.setAttribute("type", "button");
+        const btnLikesTxt = document.createElement("span");
+        btnLikesTxt.setAttribute("class", "sr-only");
+        btnLikesTxt.innerText = title + " like";
+
+        article.appendChild(btnOpenLightbox);
         article.appendChild(div);
         div.appendChild(p);
         div.appendChild(div2);
         div2.appendChild(p2);
-        div2.appendChild(linkLikes);
+        linkLikes.appendChild(btnLikesTxt);
+        btnLikes.appendChild(linkLikes);
+        div2.appendChild(btnLikes);
 
         return (article);
     }
 
-    return { getPhotosDOM }
+    return { getPhotosDOM };
 }
 /**
  * click ↑ nb de likes
@@ -75,9 +91,9 @@ function ClickLike(idPhoto) {
         DisplayLikesChanges(idPhoto);
     } else {
         // sinon on verif si l'id a deja été liké
-        tableauIds = cookieIds.split(",");
+        let tableauIds = cookieIds.split(",");
         if (tableauIds.includes(idPhoto.toString())) {
-            alert("Vous avez déjà liké ce média.")
+            alert("Vous avez déjà liké ce média.");
         } else {
             document.cookie = "ids=" + cookieIds + "," + idPhoto;
             DisplayLikesChanges(idPhoto);
@@ -89,8 +105,8 @@ function ClickLike(idPhoto) {
  * MAJ affichage media et likes
  */
 async function DisplayLikesChanges(idPhoto) {
-    const id = getPhotographerId();
-    const photos = await getPhotographerPhotos(id);
+    const id = getPhotographerId(); /* eslint-disable-line no-undef */
+    const photos = await getPhotographerPhotos(id);/* eslint-disable-line no-undef */
 
     // on fait les changements dans le json
     for (let index = 0; index < photos.length; index++) {
@@ -98,8 +114,8 @@ async function DisplayLikesChanges(idPhoto) {
             photos[index].likes++;
         }
     }
-    displayPhotos(photos);
-    displayLikesTotal(await calculNbLikes(photos));
+    displayPhotos(photos);/* eslint-disable-line no-undef */
+    displayLikesTotal(await calculNbLikes(photos));/* eslint-disable-line no-undef */
 }
 
 /**
@@ -110,10 +126,10 @@ async function DisplayLikesChanges(idPhoto) {
 function GetCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
+    let ca = decodedCookie.split(";");
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) == ' ') {
+        while (c.charAt(0) == " ") {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
@@ -141,15 +157,15 @@ function DisplayMedia(image, name, video, title) {
     const mediaTitle = document.getElementById("lightbox-photo-title");
     if (image === undefined) {
         let picture = `assets/photos/${name}/${video}`;
-        const media = document.createElement('video');
+        const media = document.createElement("video");
         media.setAttribute("src", picture);
         media.controls = true;
         mediaContainer.appendChild(media);
     } else {
         let picture = `assets/photos/${name}/${image}`;
-        const media = document.createElement('img');
+        const media = document.createElement("img");
         media.setAttribute("src", picture);
-        media.setAttribute('alt', title);
+        media.setAttribute("alt", title);
         mediaContainer.appendChild(media);
     }
     mediaTitle.textContent = title;
@@ -162,7 +178,7 @@ function DisplayLightBox() {
     const lightbox = document.getElementById("lightbox");
     lightbox.style.display = "block";
     lightbox.setAttribute("aria-hidden", false);
-    lightboxOpened = true;
+    lightboxOpened = true;/* eslint-disable-line no-undef */
 
     const main = document.getElementById("main");
     main.setAttribute("aria-hidden", true);

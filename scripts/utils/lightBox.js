@@ -1,4 +1,4 @@
-let lightboxOpened = false;
+let lightboxOpened = false; /* eslint-disable-line no-unused-vars */
 
 Init();
 
@@ -44,31 +44,32 @@ function CloseLightBox() {
 
 function DisplayPreviousMedia() {
     // on filtre les photos du photographe
-    const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());
+    const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());/* eslint-disable-line no-undef */
 
     // on décremente l'index de la photo de la lightbox
     DecrementSelectedMedia(photoDuPhotographe);
 
     // on affiche le nouveau media
-    DisplayMedia(photoDuPhotographe[selectedMedia].image, selectedPhotographer, photoDuPhotographe[selectedMedia].video, photoDuPhotographe[selectedMedia].title);
+    /* eslint-disable-line no-undef */DisplayMedia(photoDuPhotographe[selectedMedia].image, selectedPhotographer, photoDuPhotographe[selectedMedia].video, photoDuPhotographe[selectedMedia].title);
 
 }
 
 function DisplayNextMedia() {
     // on filtre les photos du photographe
-    const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());
+    const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());/* eslint-disable-line no-undef */
 
     // on incrémente l'index de la photo de la lightbox
     IncrementSelectedMedia(photoDuPhotographe);
 
     // on affiche le nouveau media
-    DisplayMedia(photoDuPhotographe[selectedMedia].image, selectedPhotographer, photoDuPhotographe[selectedMedia].video, photoDuPhotographe[selectedMedia].title);
+    DisplayMedia(photoDuPhotographe[selectedMedia].image, selectedPhotographer, photoDuPhotographe[selectedMedia].video, photoDuPhotographe[selectedMedia].title);/* eslint-disable-line no-undef */
 }
 
 /**
  *  incrémente l'index de la photo de la lightbox
  */
 function IncrementSelectedMedia(photoDuPhotographe) {
+    /* eslint-disable no-undef */
     if (selectedMedia == photoDuPhotographe.length - 1) {
         // on repart du premier élément de la liste
         selectedMedia = 0;

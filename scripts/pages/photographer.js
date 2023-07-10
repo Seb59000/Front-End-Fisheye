@@ -6,7 +6,7 @@ let photosFromJSON = "";
 function getPhotographerId() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get('id')
+    const id = urlParams.get("id");
 
     return id;
 }
@@ -30,14 +30,14 @@ async function getPhotographerInfos(idPhotographer) {
 async function displayInfos(photographer) {
     const photographerHeader = document.querySelector(".photograph-header");
 
-    const photographerModel = photographerFactory(photographer);
+    const photographerModel = photographerFactory(photographer);/* eslint-disable-line no-undef */
     const userCardDOM = photographerModel.getPhotographerDataDOM();
     photographerHeader.appendChild(userCardDOM);
 
     // dans la modale
     const photographerNameElt = document.getElementById("photographer-name");
     photographerNameElt.textContent = photographer.name;
-};
+}
 
 /**
  * Récupération des photos du photographe depuis le fichier JSON
@@ -57,16 +57,16 @@ async function getPhotographerPhotos(id) {
 */
 function displayPhotos(photos) {
     const listPhotos = document.querySelector(".photos-list");
-    listPhotos.innerHTML = '';
+    listPhotos.innerHTML = "";
 
     let cptr = 0;
     photos.forEach((photo) => {
-        const photosModel = mediaFactory(photo, photographerName, cptr);
+        const photosModel = mediaFactory(photo, photographerName, cptr);/* eslint-disable-line no-undef */
         const photosDOM = photosModel.getPhotosDOM();
         listPhotos.appendChild(photosDOM);
         cptr++;
     });
-};
+}
 
 /** 
  * Affichage des prix du photographe
@@ -74,7 +74,7 @@ function displayPhotos(photos) {
 function displayPrice(price) {
     const priceHtml = document.getElementById("price");
     priceHtml.textContent = price + "€ / jour";
-};
+}
 
 /** 
  * Affichage des likes du photographe
@@ -82,7 +82,7 @@ function displayPrice(price) {
 function displayLikesTotal(likesTotal) {
     const likesTotalHtml = document.getElementById("likesTotal");
     likesTotalHtml.textContent = likesTotal;
-};
+}
 
 /** 
  * Calcul des likes du photographe
@@ -93,7 +93,7 @@ async function calculNbLikes(photos) {
         totLikes += photos[index].likes;
     }
     return totLikes;
-};
+}
 
 /**
  * réordonne les médias
@@ -102,16 +102,13 @@ async function OrderMedias() {
     const tri = document.getElementById("tri").value;
     switch (tri) {
         case "date":
-            const photosOrderedByDate = await OrderByDate();
-            displayPhotos(photosOrderedByDate);
+            displayPhotos(await OrderByDate());
             break;
         case "titre":
-            const photosOrderByTitle = await OrderByTitle();
-            displayPhotos(photosOrderByTitle);
+            displayPhotos(await OrderByTitle());
             break;
         case "popularite":
-            const photosOrderByLikes = await OrderByLikes();
-            displayPhotos(photosOrderByLikes);
+            displayPhotos(await OrderByLikes());
             break;
         default:
             break;
@@ -190,7 +187,7 @@ async function init() {
 
     displayPrice(data.price);
     displayLikesTotal(await calculNbLikes(photos));
-};
+}
 
 init();
 
@@ -199,7 +196,7 @@ init();
  */
 function EventCloseModale() {
     const modalClose = document.getElementById("modale-close");
-    modalClose.addEventListener("click", closeModal);
+    modalClose.addEventListener("click", closeModal);/* eslint-disable-line no-undef */
 }
 
 /**
