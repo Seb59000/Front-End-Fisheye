@@ -41,7 +41,9 @@ function CloseLightBox() {
 
     lightboxOpened = false;
 }
-
+/**
+ * affichage media avant
+ */
 function DisplayPreviousMedia() {
     // on filtre les photos du photographe
     const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());/* eslint-disable-line no-undef */
@@ -54,6 +56,9 @@ function DisplayPreviousMedia() {
 
 }
 
+/**
+ * affichage media suivant
+ */
 function DisplayNextMedia() {
     // on filtre les photos du photographe
     const photoDuPhotographe = photosFromJSON.media.filter(media => media.photographerId == getPhotographerId());/* eslint-disable-line no-undef */

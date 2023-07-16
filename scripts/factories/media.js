@@ -20,7 +20,6 @@ function mediaFactory(data, name, cptr) { /* eslint-disable-line no-unused-vars 
             let picture = `assets/photos/${name}/${video}`;
             img = document.createElement("video");
             img.setAttribute("src", picture);
-            img.setAttribute("alt", title);
             const textDescription = document.createElement("span");
             textDescription.innerText = "desc";
             textDescription.setAttribute("class", "sr-only");
@@ -28,6 +27,8 @@ function mediaFactory(data, name, cptr) { /* eslint-disable-line no-unused-vars 
             btnOpenLightbox.addEventListener("click", function () {
                 ClickOnMedia(title, name, image, video, cptr);
             });
+            btnOpenLightbox.setAttribute("aria-label", title);
+
         } else {
             img.setAttribute("role", "navigation");
             let picture = `assets/photos/${name}/${image}`;
@@ -151,6 +152,9 @@ function ClickOnMedia(title, name, image, video, cptr) {
     selectedPhotographer = name;
 }
 
+/**
+ * affichage media
+ */
 function DisplayMedia(image, name, video, title) {
     const mediaContainer = document.getElementById("lightbox-media");
     mediaContainer.innerHTML = "";

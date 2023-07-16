@@ -48,6 +48,7 @@ function closeModal() {
 
     contactModalOpened = false;
 }
+
 /**
  * eventlistener 
  */

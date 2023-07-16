@@ -73,7 +73,14 @@ function displayPhotos(photos) {
 */
 function displayPrice(price) {
     const priceHtml = document.getElementById("price");
-    priceHtml.textContent = price + "€ / jour";
+    const text = document.createElement("span");
+    text.textContent = price + "€ / jour";
+    text.setAttribute("aria-hidden", "true");
+    const aria = document.createElement("span");
+    aria.setAttribute("class", "sr-only");
+    aria.textContent = price + "€ par jour";
+    priceHtml.appendChild(text);
+    priceHtml.appendChild(aria);
 }
 
 /** 
@@ -200,7 +207,7 @@ function EventCloseModale() {
 }
 
 /**
- * event listener fermeture modale contact
+ * event listener trie medias
  */
 function EventOrderMedias() {
     const modalClose = document.querySelector(".select");

@@ -4,6 +4,7 @@
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/64434449ec.js" crossorigin="anonymous"></script>
@@ -12,7 +13,7 @@
 
 <body>
   <header>
-    <a href="index.html">
+    <a href="index.html" tabindex="1">
       <img src="assets/images/logo.png" alt="logo de FishEye - Page d’accueil" class="logo" dir="ltr" rel="icon">
     </a>
   </header>
@@ -30,9 +31,10 @@
 
       <div role="navigation" class="photos-list"></div>
     </div>
-    <div id="price-and-likes">
+    <div id="price-and-likes" tabindex="5">
       <span id="likesTotal"></span>
       <span aria-hidden="true" class="fa-solid fa-heart"></span>
+      <span aria-hidden="false" class="sr-only">like</span>
       <span id="price"></span>
     </div>
   </main>
