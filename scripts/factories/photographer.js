@@ -12,7 +12,6 @@ function photographerFactory(data) { /* eslint-disable-line no-unused-vars */
         link.setAttribute("title", name);
         link.setAttribute("tabindex", cptr);
         link.setAttribute("href", "photographer.html?id=" + id);
-        // link.setAttribute("role", "navigation");
         const img = document.createElement("img");
         img.setAttribute("src", picture);
         img.setAttribute("alt", "photographe " + name);

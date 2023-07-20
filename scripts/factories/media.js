@@ -120,7 +120,7 @@ async function DisplayLikesChanges(idPhoto) {
 }
 
 /**
- * 
+ * Obtenir les cookies associés
  * @param nomDuCookie 
  * @returns cookie 
  */
